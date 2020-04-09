@@ -19,20 +19,30 @@ public class MenuManager : MonoBehaviour
 	{
 		print("開始載入");
 		panelloading.SetActive(true);
-		textloading.text = ("99.9%");
-		imageloading.fillAmount = 0.999f;
 		//SceneManager.LoadScene("關卡1");
 		StartCoroutine("Loading");
 	}
 
+	/// <summary>
+	///場景載入 
+	/// </summary>
 	public IEnumerator Loading()
 	{
 		AsyncOperation ao = SceneManager.LoadSceneAsync("關卡1");
-		print(ao.progress);
-		yield return null;
-		print(ao.progress);
-		yield return null;
-		print(ao.progress);
-		yield return null;
+		ao.allowSceneActivation = false;
+		while (!ao.isDone)
+		{
+			textloading.text = ao.progress / 0.9f * 100 + "%";
+			imageloading.fillAmount = ao.progress / 0.9f;
+
+			if (ao.progress == 0.9f)
+				ao.allowSceneActivation = true;
+
+			yield return null;
+
+			
+
+		}
+		
 	}
 }
