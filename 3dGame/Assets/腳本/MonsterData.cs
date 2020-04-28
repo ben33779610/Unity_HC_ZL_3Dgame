@@ -9,6 +9,9 @@ public class MonsterData : ScriptableObject
 	public float atk;
 	[Header("速度"),Range(1,150)]
 	public float speed;
-
+	[Header("sp藥水掉落機率"),Range(0, 1)]
+	public float spr;
+	[Header("hp藥水掉落機率"),Range(0, 1)]
+	public float hpr;
 
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5983018456764704339}
   - component: {fileID: 5983018456764704336}
   - component: {fileID: 330132633572695688}
-  - component: {fileID: 3877235312511068303}
+  - component: {fileID: 7715281485213493800}
   m_Layer: 0
   m_Name: "\u87F2\u6DB2"
   m_TagString: Untagged
@@ -4772,17 +4772,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!136 &3877235312511068303
-CapsuleCollider:
+--- !u!135 &7715281485213493800
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5983018456764704337}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.7166376
-  m_Height: 1.8721054
-  m_Direction: 1
-  m_Center: {x: 0.25000006, y: -0.62145865, z: -0.53207856}
+  serializedVersion: 2
+  m_Radius: 0.67
+  m_Center: {x: -0.026538849, y: 0.034317978, z: -0.036432274}

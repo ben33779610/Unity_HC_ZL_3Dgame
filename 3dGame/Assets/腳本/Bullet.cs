@@ -2,9 +2,7 @@
 
 public class Bullet : MonoBehaviour
 {
-	/// <summary>
-	/// 子彈的傷害
-	/// </summary>
+	[Header("傷害")]
 	public float damage;
 	public bool player;
 
@@ -14,24 +12,25 @@ public class Bullet : MonoBehaviour
 	/// <param name="other"></param>
 	private void OnTriggerEnter(Collider other)
 	{
-		if (!player && other.tag == "Player")
+		/*		if (!player && other.tag == "Player")
+				{
+					other.GetComponent<Beetle>().Hit(damage);
+					Destroy(gameObject);
+				}
+				*/
+		
+		if (other.tag == "Enemy")
 		{
-			other.GetComponent<player>().Hit(damage);
-			Destroy(gameObject);
-		}
 
-
-	}
-	private void OnCollisionEnter(Collision collision)
-	{
-		if (player && collision.gameObject.tag == "Enemy" && collision.gameObject.GetComponent<Enemy>())
-		{
-			collision.gameObject.GetComponent<Enemy>().Hit(damage);
+			other.gameObject.GetComponent<Monster>().Hit(damage);
 			Destroy(gameObject);
+
 		}
 		else
 		{
 			Destroy(gameObject);
 		}
+
 	}
+
 }

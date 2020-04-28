@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db8daa368333cb4285a15daee129890, type: 3}
   m_Name: "\u8718\u86DB"
   m_EditorClassIdentifier: 
-  hp: 500
+  hp: 50
   atk: 10
   speed: 10
+  spr: 1
+  hpr: 1

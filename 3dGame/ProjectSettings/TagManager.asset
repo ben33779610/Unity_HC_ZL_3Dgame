@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - "SP\u85E5\u6C34"
+  - "\u56DE\u8840\u85E5\u6C34"
   layers:
   - Default
   - TransparentFX

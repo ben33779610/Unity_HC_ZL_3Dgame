@@ -17,6 +17,9 @@ public class Beetle : MonoBehaviour
 	public float cd = 1;
 	[Header("子彈速度")]
 	public float bulspeed = 1;
+	[Header("傷害")]
+	[Range(1, 1000)]
+	public float atk = 10;
 	[Header("動畫控制器")]
 	private Animator ani;
 
@@ -68,6 +71,8 @@ public class Beetle : MonoBehaviour
 		posbul.z += 3f;
 		posbul.y += -0.1f;
 		GameObject temp =  Instantiate(bullet, posbul, Quaternion.identity);
+		temp.AddComponent<Bullet>();
+		temp.GetComponent<Bullet>().damage = atk;
 		temp.GetComponent<Rigidbody>().AddForce(0, 0, bulspeed);
 	}
 	
