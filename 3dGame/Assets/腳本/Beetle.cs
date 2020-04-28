@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 
 public class Beetle : MonoBehaviour
 {
@@ -17,23 +17,31 @@ public class Beetle : MonoBehaviour
 	public float cd = 1;
 	[Header("子彈速度")]
 	public float bulspeed = 1;
-	[Header("傷害")]
-	[Range(1, 1000)]
+	[Header("傷害"),Range(1, 1000)]
 	public float atk = 10;
+	[Header("血量")]
+	public float hp = 100;
+	[Header("血條")]
+	public Image hpbar;
 	[Header("動畫控制器")]
 	private Animator ani;
 
-	private float timer;
+	private float curhp;	//現在血量
+	private float timer;	//計時器
+
 
 	private void Start()
 	{
 		ani = GetComponent<Animator>();
+		curhp = hp;
+		hpbar.fillAmount = hp / 100;
 	}
 
 	private void Update()
 	{
 		Move();
 		Attack();
+		
 	}
 
 
@@ -51,6 +59,26 @@ public class Beetle : MonoBehaviour
 		pos.x = Mathf.Clamp(pos.x, 48, 156);
 		pos.z = Mathf.Clamp(pos.z, 4.85f, 26);
 		transform.position = pos;
+	}
+
+	private void EatSP()
+	{
+		if ( cd > 0.7f) 
+			cd -= 0.1f;
+	}
+
+	private void  Eathp()
+	{
+		hp += 10;
+		curhp += 10;
+		StartCoroutine("Hpbareffect");
+	}
+	private IEnumerator Hpbareffect()
+	{
+		
+		hpbar.fillAmount = curhp / 100;
+		
+		yield return null;
 	}
 
 	private void Attack()
@@ -75,5 +103,23 @@ public class Beetle : MonoBehaviour
 		temp.GetComponent<Bullet>().damage = atk;
 		temp.GetComponent<Rigidbody>().AddForce(0, 0, bulspeed);
 	}
-	
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (other.tag == "SP藥水")
+		{
+			
+			EatSP();
+			Destroy(other.gameObject);
+		}
+
+		if (other.tag == "回血藥水")
+		{
+			
+			Eathp();
+			Destroy(other.gameObject);
+		}
+
+	}
+
 }

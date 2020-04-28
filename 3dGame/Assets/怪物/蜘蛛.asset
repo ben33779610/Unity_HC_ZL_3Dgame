@@ -15,5 +15,5 @@ MonoBehaviour:
   hp: 50
   atk: 10
   speed: 10
-  spr: 1
-  hpr: 1
+  spr: 0.1
+  hpr: 0.3
