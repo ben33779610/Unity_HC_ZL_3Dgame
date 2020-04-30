@@ -12,14 +12,17 @@ public class Bullet : MonoBehaviour
 	/// <param name="other"></param>
 	private void OnTriggerEnter(Collider other)
 	{
-		/*		if (!player && other.tag == "Player")
-				{
-					other.GetComponent<Beetle>().Hit(damage);
-					Destroy(gameObject);
-				}
-				*/
-		
-		if (other.tag == "Enemy")
+		if (!player && other.tag == "Player")
+		{
+			other.GetComponent<Beetle>().Hit(damage);
+			Destroy(gameObject);
+		}
+		else
+		{
+			Destroy(gameObject, 10);
+		}
+
+		if (player && other.tag == "Enemy")
 		{
 
 			other.gameObject.GetComponent<Monster>().Hit(damage);

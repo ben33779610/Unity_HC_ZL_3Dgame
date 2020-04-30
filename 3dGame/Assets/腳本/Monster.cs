@@ -6,13 +6,20 @@ public class Monster : MonoBehaviour
 	public MonsterData Mdata;
 	public GameObject propsp;
 	public GameObject prophp;
+	[Header("子彈")]
+	public GameObject bullet;
 	private Animator ani;
 	private float hp;
+	private float timer;
 
 	private void Start()
 	{
 		ani = GetComponent<Animator>();
 		hp = Mdata.hp;
+	}
+	private void Update()
+	{
+		Attack();
 	}
 	public void Hit(float damage)
 	{
@@ -37,5 +44,17 @@ public class Monster : MonoBehaviour
 		float rhp = Random.Range(0f, 1f);
 		if (rhp < Mdata.hpr) Instantiate(prophp, transform.position + Vector3.right * Random.Range(-1f, 1f), Quaternion.identity);
 	}
-    
+
+	private void Attack()
+	{
+		timer += Time.deltaTime;
+		if (timer > Mdata.atkcd)
+		{
+			timer = 0;
+			ani.SetTrigger("攻擊觸發");
+			GameObject temp = Instantiate(bullet, transform.position+transform.forward, Quaternion.identity);
+			temp.AddComponent<Move>().speed = Mdata.bspeed;
+			temp.AddComponent<Bullet>().damage = Mdata.atk;
+		}
+	}
 }

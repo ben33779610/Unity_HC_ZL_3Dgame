@@ -44,9 +44,21 @@ public class Beetle : MonoBehaviour
 		
 	}
 
+	public void Hit(float damage)
+	{
+		if (ani.GetBool("死亡開關")) return;
+		curhp -= damage;
+		StartCoroutine("Hpbareffect");
+		if (curhp <= 0) Dead();
+	}
+	private void Dead()
+	{
+		ani.SetBool("死亡開關", true);
+	}
 
 	private void Move()
 	{
+		if (ani.GetBool("死亡開關")) return;
 		float h = Input.GetAxis("Horizontal")*-1;
 		float v = Input.GetAxis("Vertical")*-1;
 		transform.Translate(h * Time.deltaTime * speed, 0, v * Time.deltaTime* speed);
@@ -63,14 +75,16 @@ public class Beetle : MonoBehaviour
 
 	private void EatSP()
 	{
+		if (ani.GetBool("死亡開關")) return;
 		if ( cd > 0.7f) 
 			cd -= 0.1f;
 	}
 
 	private void  Eathp()
 	{
-		hp += 10;
-		curhp += 10;
+		if (ani.GetBool("死亡開關")) return;
+		if ( curhp < hp ) 
+			curhp += 10;
 		StartCoroutine("Hpbareffect");
 	}
 	private IEnumerator Hpbareffect()
@@ -83,6 +97,7 @@ public class Beetle : MonoBehaviour
 
 	private void Attack()
 	{
+		if (ani.GetBool("死亡開關")) return;
 		timer += Time.deltaTime;
 		if (timer > cd)
 		{
@@ -101,6 +116,7 @@ public class Beetle : MonoBehaviour
 		GameObject temp =  Instantiate(bullet, posbul, Quaternion.identity);
 		temp.AddComponent<Bullet>();
 		temp.GetComponent<Bullet>().damage = atk;
+		temp.GetComponent<Bullet>().player = true;
 		temp.GetComponent<Rigidbody>().AddForce(0, 0, bulspeed);
 	}
 

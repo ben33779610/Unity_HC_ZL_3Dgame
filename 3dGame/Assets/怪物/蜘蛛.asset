@@ -17,3 +17,5 @@ MonoBehaviour:
   speed: 10
   spr: 0.1
   hpr: 0.3
+  atkcd: 2
+  bspeed: 15
