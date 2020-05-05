@@ -896,6 +896,7 @@ GameObject:
   - component: {fileID: 7525166144427752504}
   - component: {fileID: 7583048247471713713}
   - component: {fileID: 7583048247471713714}
+  - component: {fileID: -173851049071350523}
   m_Layer: 0
   m_Name: "\u87F2\u5B50"
   m_TagString: Enemy
@@ -983,6 +984,19 @@ MonoBehaviour:
   propsp: {fileID: 1000013846074356, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
   prophp: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
   bullet: {fileID: 5983018456764704337, guid: 3ee3f1a2307ab7441a7994a2dcf79eb0, type: 3}
+--- !u!114 &-173851049071350523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7582425769690439356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9606c1c04eddfcf47b7c74165d97d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 3
 --- !u!1 &7582447156753304286
 GameObject:
   m_ObjectHideFlags: 0

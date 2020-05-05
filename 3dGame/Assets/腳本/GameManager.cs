@@ -7,7 +7,12 @@ public class GameManager : MonoBehaviour
 	[Header("移動速度")]
 	[Range(1f, 50f)]
 	public float movespeed = 1.5f;
-
+	[Header("過關畫面")]
+	public GameObject win;
+	[Header("失敗畫面")]
+	public GameObject lose;
+	[Header("是否通關")]
+	public bool passlv;
 	/// <summary>
 	/// 移動地板
 	/// </summary>
@@ -25,6 +30,24 @@ public class GameManager : MonoBehaviour
 		
 		
 	}
+
+	/// <summary>
+	/// 顯示勝利畫面
+	/// </summary>
+	public void Win()
+	{
+		win.SetActive(true);
+	}
+	/// <summary>
+	/// 顯示失敗畫面
+	/// </summary>
+	public void Lose()
+	{
+		
+		lose.SetActive(true);
+
+	}
+
 	private void FixedUpdate()
 	{
 		MoveTerrain();

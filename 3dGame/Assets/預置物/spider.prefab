@@ -298,9 +298,11 @@ GameObject:
   - component: {fileID: 2666377738330954239}
   - component: {fileID: 2666377738338645627}
   - component: {fileID: 3131485319091965532}
+  - component: {fileID: 8243675456415086681}
+  - component: {fileID: -3773430192031396898}
   m_Layer: 0
   m_Name: spider
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -352,7 +354,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1fe81f848bcc984aa9402ae4229e023, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mdata: {fileID: 0}
+  Mdata: {fileID: 11400000, guid: 45e672d353a6bfa42b44d653a9523618, type: 2}
+  propsp: {fileID: 1000013846074356, guid: 11e31a2ebb4e6e246bcf8c0ba034a031, type: 3}
+  prophp: {fileID: 1000012970591572, guid: 7cafb89b5a0f61f479d0a748962abbbc, type: 3}
+  bullet: {fileID: 5983018456764704337, guid: 3ee3f1a2307ab7441a7994a2dcf79eb0, type: 3}
+--- !u!135 &8243675456415086681
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2666377738331243551}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 8
+  m_Center: {x: 0, y: 2.7, z: -1.98}
+--- !u!114 &-3773430192031396898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2666377738331243551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9606c1c04eddfcf47b7c74165d97d815, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
 --- !u!1 &2666377738331243937
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,14 +27,15 @@ public class Beetle : MonoBehaviour
 	private Animator ani;
 
 	private float curhp;	//現在血量
-	private float timer;	//計時器
-
+	private float timer;    //計時器
+	private GameManager gm;
 
 	private void Start()
 	{
 		ani = GetComponent<Animator>();
 		curhp = hp;
 		hpbar.fillAmount = hp / 100;
+		gm = FindObjectOfType<GameManager>();
 	}
 
 	private void Update()
@@ -46,6 +47,7 @@ public class Beetle : MonoBehaviour
 
 	public void Hit(float damage)
 	{
+		if (gm.passlv) return;
 		if (ani.GetBool("死亡開關")) return;
 		curhp -= damage;
 		StartCoroutine("Hpbareffect");
@@ -54,6 +56,9 @@ public class Beetle : MonoBehaviour
 	private void Dead()
 	{
 		ani.SetBool("死亡開關", true);
+		gm.Invoke("Lose",4f);
+
+
 	}
 
 	private void Move()

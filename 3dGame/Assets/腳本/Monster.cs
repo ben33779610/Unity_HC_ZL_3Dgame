@@ -25,8 +25,14 @@ public class Monster : MonoBehaviour
 	{
 		if (ani.GetBool("死亡開關")) return;
 		hp -= damage;
-		
+		GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.red;
+		Invoke("ResetColor", 0.1f);
 		if (hp <= 0) Dead();
+	}
+
+	private void ResetColor()
+	{
+		GetComponentInChildren<SkinnedMeshRenderer>().material.color = Color.white;
 	}
 
 	void Dead()
@@ -48,7 +54,7 @@ public class Monster : MonoBehaviour
 	private void Attack()
 	{
 		timer += Time.deltaTime;
-		if (timer > Mdata.atkcd)
+		if (timer >= Mdata.atkcd)
 		{
 			timer = 0;
 			ani.SetTrigger("攻擊觸發");

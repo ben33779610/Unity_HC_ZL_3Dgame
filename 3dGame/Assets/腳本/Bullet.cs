@@ -12,6 +12,7 @@ public class Bullet : MonoBehaviour
 	/// <param name="other"></param>
 	private void OnTriggerEnter(Collider other)
 	{
+		
 		if (!player && other.tag == "Player")
 		{
 			other.GetComponent<Beetle>().Hit(damage);
@@ -24,7 +25,7 @@ public class Bullet : MonoBehaviour
 
 		if (player && other.tag == "Enemy")
 		{
-
+			
 			other.gameObject.GetComponent<Monster>().Hit(damage);
 			Destroy(gameObject);
 
