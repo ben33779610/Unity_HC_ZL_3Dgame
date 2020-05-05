@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -25,10 +26,10 @@ public class GameManager : MonoBehaviour
 				ter[i].position = new Vector3(0, 0, ter[1 - i].position.z + 100);
 			}
 			ter[i].Translate(0, 0, -movespeed * Time.deltaTime);
-			
+
 		}
-		
-		
+
+
 	}
 
 	/// <summary>
@@ -43,9 +44,23 @@ public class GameManager : MonoBehaviour
 	/// </summary>
 	public void Lose()
 	{
-		
+
 		lose.SetActive(true);
 
+	}
+
+	public void NextLevel()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+	}
+	public void Replay()
+	{
+		SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex );
+	}
+
+	public void Quit()
+	{
+		Application.Quit();
 	}
 
 	private void FixedUpdate()

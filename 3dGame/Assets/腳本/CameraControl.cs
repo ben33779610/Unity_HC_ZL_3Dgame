@@ -17,7 +17,7 @@ public class CameraControl : MonoBehaviour
 
 	void Start()
 	{
-		player = GameObject.Find("Flying beetle").transform;
+		player = GameObject.Find("甲蟲").transform;
 
 	}
 

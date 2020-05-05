@@ -4,6 +4,10 @@ using UnityEngine.UI;
 
 public class Beetle : MonoBehaviour
 {
+	public static float hp = 100;
+	public float cd = 1;
+
+
 	[Header("速度")][Range(1,1000)]
 	public float speed;
 	public Joystick joy;
@@ -13,14 +17,10 @@ public class Beetle : MonoBehaviour
 	public float bottom = 12;
 	[Header("子彈")]
 	public GameObject bullet;
-	[Header("攻擊冷卻")]
-	public float cd = 1;
 	[Header("子彈速度")]
 	public float bulspeed = 1;
 	[Header("傷害"),Range(1, 1000)]
 	public float atk = 10;
-	[Header("血量")]
-	public float hp = 100;
 	[Header("血條")]
 	public Image hpbar;
 	[Header("動畫控制器")]
@@ -57,7 +57,7 @@ public class Beetle : MonoBehaviour
 	{
 		ani.SetBool("死亡開關", true);
 		gm.Invoke("Lose",4f);
-
+		
 
 	}
 
