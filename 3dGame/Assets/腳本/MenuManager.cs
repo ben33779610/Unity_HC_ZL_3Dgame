@@ -45,4 +45,9 @@ public class MenuManager : MonoBehaviour
 		}
 		
 	}
+
+	private void Start()
+	{
+		Screen.SetResolution(450, 800,false);
+	}
 }
